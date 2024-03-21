@@ -1,8 +1,16 @@
 import requests
 import random
 
+from utils import *
 from enum import Enum
 from fake_useragent import UserAgent
+
+
+logger = init_logger(
+    f"logs/{dt.now().strftime("%Y-%m-%d")}.log", 
+    "%(asctime)s %(levelname)s %(message)s",
+    logging.ERROR
+)
 
 class ProxyProtocol(Enum):
     HTTP = "http"
@@ -41,6 +49,6 @@ class ProxyClient:
                     if req.status_code != 404: req.raise_for_status()
 
                     return req
-                except Exception as e: 
-                    print(e)
+                except:
+                    logger.error(f"Ошибка в HTTP запросе: {method} {url}. Прокси: {proxy}", exc_info=True)
                     continue
