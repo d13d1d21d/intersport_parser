@@ -27,7 +27,7 @@ class ProxyClient:
         self.ua = UserAgent()
 
     def as_dict(self, url: str) -> dict[str, str]:
-        return { "http": f"{self.protocol.value}://{url}", "http": f"{self.protocol.value}://{url}" }
+        return { "http": f"{self.protocol.value}://{url}", "https": f"{self.protocol.value}://{url}" }
 
     def http(
         self, 
