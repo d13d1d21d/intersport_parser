@@ -91,7 +91,7 @@ class Parser:
                             brand,
                             float(i.get("price")),
                             int(i.get("inStock")),
-                            i.get("images")
+                            i.get("images") + "&effects=Pad(cc,ffffff),Matte(FFFFFF)&width=1400&height=1400"
                         )
                     )
 
